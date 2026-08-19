@@ -1,21 +1,21 @@
 HTTP/1.1 400 Bad Request
 Content-Type: application/json; charset=utf-8
 Connection: keep-alive
-Date: Wed, 19 Aug 2026 07:41:48 GMT
-x-amzn-Remapped-Date: Wed, 19 Aug 2026 07:41:48 GMT
-x-amzn-RequestId: f6da01e7-1761-4158-a154-0d8602bc6dc7
+Date: Wed, 19 Aug 2026 12:08:11 GMT
+x-amzn-Remapped-Date: Wed, 19 Aug 2026 12:08:11 GMT
+x-amzn-RequestId: b54d3bbd-1db0-4c22-861f-65fe78dc81d8
 Access-Control-Allow-Origin: https://www.fantasypros.com
 x-amzn-Remapped-Content-Length: 118
 x-amzn-Remapped-Connection: keep-alive
 Access-Control-Allow-Credentials: true
-Via: 1.1 7fef82200634ebbec1bb1fbd85c37a68.cloudfront.net (CloudFront), 1.1 fa63af50c0e4f34ddecf2b2d0dca224e.cloudfront.net (CloudFront)
-x-amz-apigw-id: CVupfFG7IAMEYhg=
+Via: 1.1 ed5e66ae45b368b18038718315a9c648.cloudfront.net (CloudFront), 1.1 ec87b0eaae98600539e64627bd582e82.cloudfront.net (CloudFront)
+x-amz-apigw-id: CWVq3GwuIAMEQvw=
 Cache-Control: max-age=600, must-revalidate
 x-amzn-Remapped-Server: Apache/2.4.52 (Ubuntu)
 X-Amz-Cf-Pop: IAD89-P4
 Vary: Accept-Encoding,Origin
 X-Cache: Error from cloudfront
 X-Amz-Cf-Pop: AMS58-P5
-X-Amz-Cf-Id: dw6_SPoiKcF16GC3iITihdUJ_TrlIJ-NlzTrtj46k-sEGpDQROHqIw==
+X-Amz-Cf-Id: WFKF7ibyUiwgmWCNnDO6ViU7LklOJw8I7g8Oxs8Lc6aGzcQ_MU2FUw==
 Content-Length: 118
 
