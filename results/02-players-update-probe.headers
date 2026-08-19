@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Connection: keep-alive
+Date: Wed, 19 Aug 2026 07:40:58 GMT
+x-amzn-Remapped-Date: Wed, 19 Aug 2026 07:40:58 GMT
+x-amzn-RequestId: 71d718c6-cb92-4ffc-af1c-e55ac5362573
+Access-Control-Allow-Origin: https://www.fantasypros.com
+x-amzn-Remapped-Content-Length: 4814
+x-amzn-Remapped-Connection: keep-alive
+Access-Control-Allow-Credentials: true
+Via: 1.1 2d5205e2dd9e7e497b983199348a8cd0.cloudfront.net (CloudFront), 1.1 eb5552d4fb69ca0d0578ffa97b7b08fa.cloudfront.net (CloudFront)
+x-amz-apigw-id: CVuhvHGBIAMEKPQ=
+Cache-Control: max-age=1800, must-revalidate
+x-amzn-Remapped-Server: Apache/2.4.52 (Ubuntu)
+X-Amz-Cf-Pop: IAD89-P4
+Vary: Accept-Encoding,Origin
+X-Cache: Miss from cloudfront
+X-Amz-Cf-Pop: AMS58-P5
+X-Amz-Cf-Id: sNHHEbVcwkT7adC88kZvJ78OkoLhLcjb0a-MSlzI9T6a7zi4dJsagA==
+Content-Length: 4814
+
