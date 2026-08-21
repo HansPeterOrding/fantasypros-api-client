@@ -1,0 +1,171 @@
+{
+    "sport": "NFL",
+    "year": "2026",
+    "week": "1",
+    "position_id": "RB",
+    "ranking_type": "weekly",
+    "rankings": {
+        "STD": {
+            "22968": [
+                {
+                    "expert_id": "1139",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "1204",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "22",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "4436",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "3468",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "6586",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "4164",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "5598",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "2373",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "7616",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "7662",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "_0",
+                    "rank": "1"
+                }
+            ]
+        },
+        "PPR": {
+            "22968": [
+                {
+                    "expert_id": "1139",
+                    "rank": "3"
+                },
+                {
+                    "expert_id": "1204",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "22",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "4436",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "3468",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "6586",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "4164",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "5598",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "2373",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "7616",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "7662",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "_0",
+                    "rank": "1"
+                }
+            ]
+        },
+        "HALF": {
+            "22968": [
+                {
+                    "expert_id": "1139",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "1204",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "22",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "4436",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "960",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "3468",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "6586",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "4164",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "5598",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "2373",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "7616",
+                    "rank": "2"
+                },
+                {
+                    "expert_id": "7662",
+                    "rank": "1"
+                },
+                {
+                    "expert_id": "_0",
+                    "rank": "1"
+                }
+            ]
+        }
+    },
+    "public_api_limited": true,
+    "tier": "premium"
+}
