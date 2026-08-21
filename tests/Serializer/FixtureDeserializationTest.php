@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HansPeterOrding\FantasyProsApiClient\Tests\Serializer;
 
 use HansPeterOrding\FantasyProsApiClient\ApiClient\FantasyProsApiClientFactory;
+use HansPeterOrding\FantasyProsApiClient\Dto\FpComparePlayersResponse;
 use HansPeterOrding\FantasyProsApiClient\Dto\FpConsensusRankingsResponse;
 use HansPeterOrding\FantasyProsApiClient\Dto\FpExpertsResponse;
 use HansPeterOrding\FantasyProsApiClient\Dto\FpInjuriesResponse;
@@ -34,7 +35,7 @@ final class FixtureDeserializationTest extends TestCase
         $path = __DIR__ . '/../fixtures/' . $name;
         self::assertFileExists($path, sprintf('Fixture %s is missing', $name));
 
-        return (string)file_get_contents($path);
+        return (string) file_get_contents($path);
     }
 
     public function testPlayersResponse(): void
@@ -262,6 +263,31 @@ final class FixtureDeserializationTest extends TestCase
         self::assertSame(19347, $first->getPlayerId());
         self::assertContains('News', $first->getCategories() ?? []);
         self::assertNotNull($first->getImpact());
+    }
+
+    public function testComparePlayersResponse(): void
+    {
+        $response = self::$serializer->deserialize(
+            $this->fixture('33-compare-players-rb.json'),
+            FpComparePlayersResponse::class,
+            'json'
+        );
+
+        self::assertSame(2026, $response->getYear());
+        self::assertSame(1, $response->getWeek());
+        self::assertSame('RB', $response->getPositionId());
+        self::assertSame('weekly', $response->getRankingType());
+
+        $rankings = $response->getRankings();
+        self::assertIsArray($rankings);
+        self::assertArrayHasKey('STD', $rankings);
+        self::assertArrayHasKey('PPR', $rankings);
+        self::assertArrayHasKey('HALF', $rankings);
+        self::assertArrayHasKey('22968', $rankings['STD']);
+
+        $firstExpertRank = $rankings['STD']['22968'][0];
+        self::assertSame('1139', $firstExpertRank['expert_id']);
+        self::assertSame('2', $firstExpertRank['rank']);
     }
 
     public function testInjuriesResponse(): void

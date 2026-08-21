@@ -8,7 +8,19 @@ use Symfony\Component\Serializer\Attribute\Context;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 
 /**
- * PROVISIONAL shape. The capture probe returned 400 (position parameter is required). Kept loose (raw arrays) until a successful fixture is captured; do not build entity mappings on this DTO yet.
+ * Shape verified against a live prod-key fixture (2026-08-21,
+ * tests/fixtures/33-compare-players-rb.json). Unlike every other rankings
+ * endpoint this one returns PER-EXPERT ranks: for each scoring variant a map
+ * of player fpid => list of {expert_id, rank} entries. Notes:
+ *  - Requested players that are unknown or unranked for the slice are
+ *    silently omitted (no error) - do not assume the response echoes the
+ *    request's player set.
+ *  - An entry with expert_id "_0" appears alongside real expert ids and is
+ *    a sentinel (consensus row), not an expert.
+ *  - Without a ranking_type parameter the API answered ranking_type
+ *    "weekly" with the upcoming week.
+ * The rankings map keys are dynamic (fpids), so the property stays a raw
+ * array by the same rationale as the board rank maps.
  */
 final class FpComparePlayersResponse
 {
@@ -16,13 +28,19 @@ final class FpComparePlayersResponse
     private ?string $sport = null;
 
     #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
-    private ?int $count = null;
+    private ?int $year = null;
 
-    /** @var array<int, array<string, mixed>>|null PROVISIONAL - no successful live fixture captured yet; refine once one exists */
-    private ?array $players = null;
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?int $week = null;
 
-    /** @var array<int, array<string, mixed>>|null PROVISIONAL */
-    private ?array $experts = null;
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?string $positionId = null;
+
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?string $rankingType = null;
+
+    /** @var array<string, array<string, list<array{expert_id: string, rank: string}>>>|null scoring => player fpid => per-expert ranks */
+    private ?array $rankings = null;
 
     #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?int $limit = null;
@@ -41,39 +59,67 @@ final class FpComparePlayersResponse
     public function setSport(?string $sport): static
     {
         $this->sport = $sport;
+
         return $this;
     }
 
-    public function getCount(): ?int
+    public function getYear(): ?int
     {
-        return $this->count;
+        return $this->year;
     }
 
-    public function setCount(?int $count): static
+    public function setYear(?int $year): static
     {
-        $this->count = $count;
+        $this->year = $year;
+
         return $this;
     }
 
-    public function getPlayers(): ?array
+    public function getWeek(): ?int
     {
-        return $this->players;
+        return $this->week;
     }
 
-    public function setPlayers(?array $players): static
+    public function setWeek(?int $week): static
     {
-        $this->players = $players;
+        $this->week = $week;
+
         return $this;
     }
 
-    public function getExperts(): ?array
+    public function getPositionId(): ?string
     {
-        return $this->experts;
+        return $this->positionId;
     }
 
-    public function setExperts(?array $experts): static
+    public function setPositionId(?string $positionId): static
     {
-        $this->experts = $experts;
+        $this->positionId = $positionId;
+
+        return $this;
+    }
+
+    public function getRankingType(): ?string
+    {
+        return $this->rankingType;
+    }
+
+    public function setRankingType(?string $rankingType): static
+    {
+        $this->rankingType = $rankingType;
+
+        return $this;
+    }
+
+    public function getRankings(): ?array
+    {
+        return $this->rankings;
+    }
+
+    public function setRankings(?array $rankings): static
+    {
+        $this->rankings = $rankings;
+
         return $this;
     }
 
@@ -85,6 +131,7 @@ final class FpComparePlayersResponse
     public function setLimit(?int $limit): static
     {
         $this->limit = $limit;
+
         return $this;
     }
 
@@ -96,6 +143,7 @@ final class FpComparePlayersResponse
     public function setPublicApiLimited(?bool $publicApiLimited): static
     {
         $this->publicApiLimited = $publicApiLimited;
+
         return $this;
     }
 
@@ -107,6 +155,7 @@ final class FpComparePlayersResponse
     public function setTier(?string $tier): static
     {
         $this->tier = $tier;
+
         return $this;
     }
 }
