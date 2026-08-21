@@ -13,22 +13,31 @@ final class FpInjury
     #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?int $playerId = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $yahooId = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $name = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $status = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $statusShort = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $injuryType = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $comment = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $injuryUpdateDate = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $teamId = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $positionId = null;
 
     #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
@@ -41,23 +50,30 @@ final class FpInjury
     private ?float $probabilityOfPlaying = null;
 
     #[SerializedName('practice_1')]
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $practice1 = null;
 
     #[SerializedName('practice_2')]
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $practice2 = null;
 
     #[SerializedName('practice_3')]
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $practice3 = null;
 
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?string $practiceReportInjuryType = null;
 
     #[SerializedName('team_practice_1_submitted')]
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?bool $teamPractice1Submitted = null;
 
     #[SerializedName('team_practice_2_submitted')]
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?bool $teamPractice2Submitted = null;
 
     #[SerializedName('team_practice_3_submitted')]
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?bool $teamPractice3Submitted = null;
 
     public function getPlayerId(): ?int
