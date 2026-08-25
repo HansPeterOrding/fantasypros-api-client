@@ -232,10 +232,8 @@ final class FixtureDeserializationTest extends TestCase
     }
 
     /**
-     * NOT a live capture: reconstructed from the documented 2026-08-25 Q2
-     * probe (projections?position=DL&week=0 -> 201 rows with def_tackle,
-     * def_assist, def_pd, def_tlost). Replace 34-projections-dl-w0.json with
-     * the real capture (tools/capture-fixtures.sh, probe 34) before tagging.
+     * Live capture 2026-08-25 (Q2 probe follow-up): full 201-row DL list,
+     * premium tier, no "limit" key in the envelope.
      */
     public function testDlProjectionStats(): void
     {
@@ -247,15 +245,20 @@ final class FixtureDeserializationTest extends TestCase
 
         self::assertSame(201, $response->getCount());
         self::assertSame('DL', $response->getPositions());
+        self::assertCount(201, $response->getPlayers());
 
-        $stats = $response->getPlayers()[0]->getStats();
+        $first = $response->getPlayers()[0];
+        self::assertSame(18702, $first->getFpid());
+        self::assertSame('Maxx Crosby', $first->getName());
+
+        $stats = $first->getStats();
         self::assertNotNull($stats);
-        self::assertEqualsWithDelta(38.2, $stats->getDefTackle(), 0.001);
-        self::assertEqualsWithDelta(16.7, $stats->getDefAssist(), 0.001);
-        self::assertEqualsWithDelta(2.9, $stats->getDefPd(), 0.001);
-        // int in the raw JSON - absorbed by DISABLE_TYPE_ENFORCEMENT
-        self::assertEqualsWithDelta(15.0, $stats->getDefTlost(), 0.001);
-        self::assertEqualsWithDelta(13.9, $stats->getDefSack(), 0.001);
+        self::assertEqualsWithDelta(61.42, $stats->getDefTackle(), 0.001);
+        self::assertEqualsWithDelta(32.11, $stats->getDefAssist(), 0.001);
+        self::assertEqualsWithDelta(3.3, $stats->getDefPd(), 0.001);
+        // int 0 in the raw JSON - absorbed by DISABLE_TYPE_ENFORCEMENT
+        self::assertEqualsWithDelta(0.0, $stats->getDefTlost(), 0.001);
+        self::assertEqualsWithDelta(10.89, $stats->getDefSack(), 0.001);
     }
 
     public function testRosProjectionsWithNullPlayers(): void
