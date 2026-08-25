@@ -124,6 +124,7 @@ fetch "23-projections-rb-w0"     "/nfl/$SEASON/projections?position=RB&week=0"
 fetch "24-projections-k-w0"      "/nfl/$SEASON/projections?position=K&week=0"
 fetch "25-projections-dst-w0"    "/nfl/$SEASON/projections?position=DST&week=0"
 fetch "26-projections-rb-ros"    "/nfl/$SEASON/projections?position=RB&ros=true"
+fetch "34-projections-dl-w0"     "/nfl/$SEASON/projections?position=DL&week=0"
 
 if [ -n "${FP_EXPERT_ID:-}" ]; then
     fetch "27-projections-rb-single-expert" "/nfl/$SEASON/projections?position=RB&week=0&filters=$FP_EXPERT_ID"

@@ -231,6 +231,33 @@ final class FixtureDeserializationTest extends TestCase
         self::assertNotNull($stats->getPassYds300());
     }
 
+    /**
+     * NOT a live capture: reconstructed from the documented 2026-08-25 Q2
+     * probe (projections?position=DL&week=0 -> 201 rows with def_tackle,
+     * def_assist, def_pd, def_tlost). Replace 34-projections-dl-w0.json with
+     * the real capture (tools/capture-fixtures.sh, probe 34) before tagging.
+     */
+    public function testDlProjectionStats(): void
+    {
+        $response = self::$serializer->deserialize(
+            $this->fixture('34-projections-dl-w0.json'),
+            FpProjectionsResponse::class,
+            'json'
+        );
+
+        self::assertSame(201, $response->getCount());
+        self::assertSame('DL', $response->getPositions());
+
+        $stats = $response->getPlayers()[0]->getStats();
+        self::assertNotNull($stats);
+        self::assertEqualsWithDelta(38.2, $stats->getDefTackle(), 0.001);
+        self::assertEqualsWithDelta(16.7, $stats->getDefAssist(), 0.001);
+        self::assertEqualsWithDelta(2.9, $stats->getDefPd(), 0.001);
+        // int in the raw JSON - absorbed by DISABLE_TYPE_ENFORCEMENT
+        self::assertEqualsWithDelta(15.0, $stats->getDefTlost(), 0.001);
+        self::assertEqualsWithDelta(13.9, $stats->getDefSack(), 0.001);
+    }
+
     public function testRosProjectionsWithNullPlayers(): void
     {
         $response = self::$serializer->deserialize(

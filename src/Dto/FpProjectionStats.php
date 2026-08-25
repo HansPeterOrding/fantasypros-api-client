@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 
 /**
- * Union of all per-position stat keys observed in live fixtures (QB/RB/WR/TE/K/DST). All nullable - only the keys relevant to the requested position are present. points/points_ppr/points_half are always delivered together, so one request covers all scorings.
+ * Union of all per-position stat keys observed in live fixtures (QB/RB/WR/TE/K/DST) plus the IDP keys (def_tackle, def_assist, def_pd, def_tlost) confirmed by the 2026-08-25 DL projections probe (DL/LB/DB). All nullable - only the keys relevant to the requested position are present. points/points_ppr/points_half are always delivered together, so one request covers all scorings.
  */
 final class FpProjectionStats
 {
@@ -147,6 +147,18 @@ final class FpProjectionStats
 
     #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
     private ?float $defPaG = null;
+
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?float $defTackle = null;
+
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?float $defAssist = null;
+
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?float $defPd = null;
+
+    #[Context(denormalizationContext: [AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true])]
+    private ?float $defTlost = null;
 
     public function getPoints(): ?float
     {
@@ -607,6 +619,50 @@ final class FpProjectionStats
     public function setDefPaG(?float $defPaG): static
     {
         $this->defPaG = $defPaG;
+        return $this;
+    }
+
+    public function getDefTackle(): ?float
+    {
+        return $this->defTackle;
+    }
+
+    public function setDefTackle(?float $defTackle): static
+    {
+        $this->defTackle = $defTackle;
+        return $this;
+    }
+
+    public function getDefAssist(): ?float
+    {
+        return $this->defAssist;
+    }
+
+    public function setDefAssist(?float $defAssist): static
+    {
+        $this->defAssist = $defAssist;
+        return $this;
+    }
+
+    public function getDefPd(): ?float
+    {
+        return $this->defPd;
+    }
+
+    public function setDefPd(?float $defPd): static
+    {
+        $this->defPd = $defPd;
+        return $this;
+    }
+
+    public function getDefTlost(): ?float
+    {
+        return $this->defTlost;
+    }
+
+    public function setDefTlost(?float $defTlost): static
+    {
+        $this->defTlost = $defTlost;
         return $this;
     }
 }
